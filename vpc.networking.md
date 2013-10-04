@@ -6,39 +6,39 @@ Application Layer
 
 - Hub application
  - instances
-  - subnets 10.x.200.x, 10.x.201.x
-  - route - NAT devices
-  - TCP communications
-   - outbound mysql/3306 -> rds mysql instance 
-   - outbound http/80 -> internet
-   - outbound https/443 -> internet
-   - outbound https/443 -> IDMSInternal
-   - inbound http/8080 <- from ELB
-   - inbound https/8443 <- from ELB
-   - inbound ssh/22 <- from bastion
+    - subnets 10.x.200.x, 10.x.201.x
+    - route - NAT devices
+    - TCP communications
+       - outbound mysql/3306 -> rds mysql instance 
+       - outbound http/80 -> internet
+       - outbound https/443 -> internet
+       - outbound https/443 -> IDMSInternal
+       - inbound http/8080 <- from ELB
+       - inbound https/8443 <- from ELB
+       - inbound ssh/22 <- from bastion
  - ELBs
-  - subnets 10.x.208.x, 10.x.209.x - ELBs
-  - route - IGW
-  - TCP communications
-   - inbound http/80 <- from ELB
-   - inbound https/443 <- from ELB
-   - note - SSL ports need TCP listener to pass-through the SSL authentication
+    - subnets 10.x.208.x, 10.x.209.x - ELBs
+    - route - IGW
+    - TCP communications
+       - inbound http/80 <- from ELB
+       - inbound https/443 <- from ELB
+       - note - SSL ports need TCP listener to pass-through the SSL authentication
 
 
 - IDMS External application
  - instances
-  - subnets 10.x.220.x, 10.x.221.x
-  - route - IGW
-  - TCP communications
-   - outbound oracle/1521 -> rds oracle instance 
-   - inbound http/8080 <- from ELB
-   - inbound https/8443 <- from ELB
-   - inbound ssh/22 <- from bastion
+    - subnets 10.x.220.x, 10.x.221.x
+    - route - IGW
+    - TCP communications
+       - outbound oracle/1521 -> rds oracle instance 
+       - inbound http/8080 <- from ELB
+       - inbound https/8443 <- from ELB
+       - inbound ssh/22 <- from bastion
  - ELBs
-  - same subnets
-  - TCP communications
-   - inbound http/80 <- from internet
-   - inbound https/443 <- from internet
+    - same subnets
+    - TCP communications
+       - inbound http/80 <- from internet
+       - inbound https/443 <- from internet
 
 
 - IDMS Internal application
